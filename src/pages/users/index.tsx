@@ -1,10 +1,14 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Text, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Text, Tbody, Td, Th, Thead, Tr, useBreakpointValue } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
+  const isWideScreen = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
   return(
     <Box>
       <Header />
@@ -30,18 +34,18 @@ export default function UserList() {
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" width="8">
+                <Th px={["4", "4", "6"]} color="gray.300" width={["1","8"]}>
                   <Checkbox colorScheme="pink"/>
                 </Th>
                 <Th>User</Th>
-                <Th>Registration Date</Th>
-                <Th width="8"></Th>
+                { isWideScreen && <Th>Registration Date</Th> }
+                <Th width={["1","8"]}></Th>
               </Tr>
             </Thead>
 
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -50,21 +54,22 @@ export default function UserList() {
                     <Text fontSize="small" color="gray.300">dancosta.id@gmail.com</Text>
                   </Box>
                 </Td>
-                <Td>
-                  April 4th, 2022
-                </Td>
-                <Td>
-                  <Button
-                    as="a"
-                    cursor="pointer"
-                    size="sm"
-                    fontSize="sm"
-                    bg="gray.300"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16"/>}
-                  >
-                    Edit User
-                  </Button>
-                </Td>
+                  { isWideScreen && <Td>April 4th, 2022</Td> }
+                  { isWideScreen && 
+                    <Td>
+                      <Button
+                        as="a"
+                        cursor="pointer"
+                        size="sm"
+                        fontSize="sm"
+                        bg="gray.300"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="16"/>}
+                      >
+                        Edit User
+                      </Button>
+                    </Td> 
+                  }
+          
               </Tr>
             </Tbody>
           </Table>
