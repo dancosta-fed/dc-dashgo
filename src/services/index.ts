@@ -25,13 +25,13 @@ export function makeServer() {
         },
         createdAt() {
           // Create new recent date in 10 days rage, from today
-          return faker.date.recent(10, new Date()) 
+          return faker.date.recent(10, new Date())
         },
       })
     },
 
     seeds(server){
-      server.createList('user', 20) // creating 20 fake users
+      server.createList('user', 10) // creating 10 fake users
     },
     
     routes() {
