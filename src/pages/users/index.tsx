@@ -9,7 +9,8 @@ import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
     const { data, isLoading, error } = useQuery('users', async () => {
-        const response = await fetch('http://localhost:3000/api/users')
+        // const response = await fetch('http://localhost:3000/api/users')
+        const response = await fetch('https://dc-dashgo.vercel.app/api/users')
         const data = await response.json()
 
         const users = data.users.map(user => {
