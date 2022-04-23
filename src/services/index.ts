@@ -1,7 +1,11 @@
 import faker from '@faker-js/faker'
 import { createServer, Factory, Model } from 'miragejs'
 
+<<<<<<< HEAD
 // type of info from user
+=======
+// Types user is gonna have
+>>>>>>> d5d19f9f5ff69d6577106f24d91405e37a653a22
 type User ={
   name: string,
   email: string,
