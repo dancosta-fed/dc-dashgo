@@ -1,5 +1,6 @@
 import faker from '@faker-js/faker'
-import { createServer, Factory, Model, Response } from 'miragejs'
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs'
+// Use the active record from rails here.
 
 type User ={
   name: string,
@@ -9,6 +10,11 @@ type User ={
 
 export function makeServer() {
   const server = createServer({
+    // this will allow me to work with user registrations and also work with relations
+    serializers: {
+      applications: ActiveModelSerializer, // activer records
+    },
+
     models: {
       user: Model.extend<Partial<User>>({})
     },
@@ -52,6 +58,7 @@ export function makeServer() {
           { users }
         )
       })
+      this.get('users/:id')
       this.post('/users')
     
       this.namespace = ''
